@@ -1,15 +1,23 @@
+import { Container } from "@mui/material";
 import React from "react";
 import { useLocation, Outlet } from "react-router-dom";
+import Header from "../components/Header";
 
 export const BaseLayout = () => {
 
   const location = useLocation();
+  const menu = [
+    { title: 'Forum', url: '/' }
+  ]
 
   return (
-    <main >
-      <div className="main-wrapper">
+    <React.Fragment>
+      <Header sections={menu}/>
+      <main className="main-wrapper">
+        <Container maxWidth="lg">
           <Outlet {...location} />
-      </div>
-    </main>
+        </Container>
+      </main>
+    </React.Fragment>
   );
 };
