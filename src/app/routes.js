@@ -5,6 +5,7 @@ import { BaseLayout } from "../views/layouts/BaseLayout";
 import AuthLayout from "../views/layouts/AuthLayout";
 import Login from "../views/screens/auth/Login";
 import Register from "../views/screens/auth/Register";
+import Logout from "../views/components/Logout";
 
 export const LocalRoutes = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ export const LocalRoutes = () => {
       <Route element={<BaseLayout />}>
         {/* Home Route */}
         <Route index exact path="/" element={<Home />}></Route>
+        <Route exact path="/logout" element={<Logout />}></Route>
       </Route>
       <Route element={<AuthLayout />}>
         {/* Auth Routes */}

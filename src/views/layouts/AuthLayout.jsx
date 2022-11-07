@@ -1,11 +1,18 @@
 import { Grid, Paper } from "@mui/material";
 import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AuthLayout = () => {
+    
   const location = useLocation();
+  const auth = useSelector((state) => state.auth);
+
+  if (auth.is_logged) {
+    return <Navigate to="/" state={{ from: location }} replace />;
+  }
 
   return (
     <React.Fragment>
