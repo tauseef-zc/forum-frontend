@@ -12,6 +12,8 @@ services:
     container_name: forum_react
     stdin_open: true
     tty: true
+    volumes:
+      - ./src:/var/sites/app/src
     ports:
       - "3000:3000"
     networks:
