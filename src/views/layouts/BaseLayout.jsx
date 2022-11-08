@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation, Outlet, Navigate } from "react-router-dom";
@@ -15,18 +15,29 @@ export const BaseLayout = () => {
   }
 
   const menu = [
-    { title: 'Forum', url: '/' }
-  ]
+    { title: "Home", url: "/" },
+    { title: "Add Post", url: "/posts/add-post" },
+    { title: "My Posts", url: "/posts" },
+  ];
 
   return (
     <React.Fragment>
       <ToastContainer position="top-right" limit={1} />
       <Header sections={menu} />
-      <main className="main-wrapper">
-        <Container maxWidth="lg">
+      <Box
+        className="main-wrapper"
+        sx={{
+          backgroundColor: (theme) =>
+            theme.palette.mode === "light"
+              ? theme.palette.grey[100]
+              : theme.palette.grey[900],
+          height: "90vh",
+        }}
+      >
+        <Container>
           <Outlet {...location} />
         </Container>
-      </main>
+      </Box>
     </React.Fragment>
   );
 };

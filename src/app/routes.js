@@ -6,6 +6,7 @@ import AuthLayout from "../views/layouts/AuthLayout";
 import Login from "../views/screens/auth/Login";
 import Register from "../views/screens/auth/Register";
 import Logout from "../views/components/Logout";
+import PostCreate from "../views/screens/PostCreate";
 
 export const LocalRoutes = () => {
   const location = useLocation();
@@ -15,6 +16,8 @@ export const LocalRoutes = () => {
       <Route element={<BaseLayout />}>
         {/* Home Route */}
         <Route index exact path="/" element={<Home />}></Route>
+        <Route index exact path="/posts" element={<Home />}></Route>
+        <Route index exact path="/posts/add-post" element={<PostCreate />}></Route>
         <Route exact path="/logout" element={<Logout />}></Route>
       </Route>
       <Route element={<AuthLayout />}>

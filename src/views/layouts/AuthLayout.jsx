@@ -17,7 +17,7 @@ const AuthLayout = () => {
   return (
     <React.Fragment>
       <main className="main-wrapper">
-        <ToastContainer position="top-right" limit={1} />
+        <ToastContainer position="bottom-right" limit={1} />
         <Grid container component="main" sx={{ height: "100vh" }}>
           <Grid
             item
