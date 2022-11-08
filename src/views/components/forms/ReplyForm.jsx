@@ -2,8 +2,7 @@ import { Button, Grid, TextField } from '@mui/material';
 import React, { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSinglePost } from '../../../app/slices/SinglePostSlice';
-import { submitComment } from '../../../app/slices/SubmitCommentSlice';
+import { resetCommentSubmit, submitComment } from '../../../app/slices/SubmitCommentSlice';
 import NotificationAlert from '../Notification';
 
 const ReplyForm = (props) => {
@@ -35,6 +34,9 @@ const ReplyForm = (props) => {
     useEffect(() => {
       if (message) {
         reset();
+        setTimeout(() => {
+          dispatch(resetCommentSubmit());
+        }, 5000);
       }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, message, reset]);

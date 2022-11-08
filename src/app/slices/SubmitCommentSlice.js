@@ -33,7 +33,7 @@ const SubmitCommentSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    resetForumSubmit: (state) => {
+    resetCommentSubmit: (state) => {
       state.loading = false;
       state.message = "";
       state.error = "";
@@ -64,6 +64,6 @@ const SubmitCommentSlice = createSlice({
   },
 });
 
-export const { resetForumSubmit } = SubmitCommentSlice.actions;
+export const { resetCommentSubmit } = SubmitCommentSlice.actions;
 
 export default SubmitCommentSlice.reducer;

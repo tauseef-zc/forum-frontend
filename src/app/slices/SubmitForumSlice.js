@@ -33,7 +33,7 @@ export const submitForum = createAsyncThunk("submitForum", (data) => {
 });
 
 const SubmitForumSlice = createSlice({
-  name: "auth",
+  name: "submit_forum",
   initialState,
   reducers: {
     resetForumSubmit: (state) => {

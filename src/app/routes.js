@@ -9,6 +9,7 @@ import Logout from "../views/components/Logout";
 import PostCreate from "../views/screens/PostCreate";
 import usePermission from "./hooks/usePermission";
 import SingleForum from "../views/screens/SingleForum";
+import MyForums from "../views/screens/MyForums";
 
 export const LocalRoutes = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ export const LocalRoutes = () => {
       <Route element={<BaseLayout />}>
         {/* Home Route */}
         <Route index exact path="/" element={<Home />}></Route>
-        <Route index exact path="/posts" element={<Home />}></Route>
+        <Route index exact path="/posts" element={<MyForums />}></Route>
         <Route
           index
           exact

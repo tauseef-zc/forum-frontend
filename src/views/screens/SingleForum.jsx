@@ -19,10 +19,12 @@ const SingleForum = () => {
   return (
     <Grid item xs={12} md={12} sx={{ py: 3 }}>
       <Paper sx={{ p: 3 }}>
-        { loading && <p>Loading...</p>}
-        {!loading && forum && (
+        {!forum && <p>Loading...</p>}
+        {Object.keys(forum).length > 0 && (
           <>
             <h3>{forum.question}</h3>
+            <h4>by {forum.user.name}</h4>
+            <h5>{forum.created_at}</h5>
             <Divider />
             <h4>
               Replies{" "}
@@ -54,7 +56,7 @@ const SingleForum = () => {
                         <Typography
                           sx={{ width: "100%" }}
                           component="h5"
-                          variant="h5"
+                          variant="h6"
                           color="text.primary"
                         >
                           {item.comment}

@@ -20,14 +20,14 @@ export const BaseLayout = () => {
   if(isAdmin){
       menu = [
        { title: "Home", url: "/" },
-       { title: "All Posts", url: "/admin/posts" },
-       { title: "Add New Post", url: "/posts/add-post" },
+       { title: "All Forums", url: "/admin/posts" },
+       { title: "Add New Forum", url: "/posts/add-post" },
      ];
   }else{
       menu = [
         { title: "Home", url: "/" },
-        { title: "My Posts", url: "/posts" },
-        { title: "Add New Post", url: "/posts/add-post" },
+        { title: "My Forums", url: "/posts" },
+        { title: "Add New Forum", url: "/posts/add-post" },
       ];
   }
 

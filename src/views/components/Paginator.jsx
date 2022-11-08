@@ -18,7 +18,7 @@ const Paginator = (props) => {
   useEffect(() => {
     paginateAction(search, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [search, page]);
 
   return (
     <div className="paginator">

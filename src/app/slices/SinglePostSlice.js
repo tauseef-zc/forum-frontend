@@ -16,7 +16,7 @@ export const getSinglePost = createAsyncThunk("getSinglePost", async (data) => {
 });
 
 const SinglePostSlice = createSlice({
-  name: "auth",
+  name: "single",
   initialState,
   reducers: {
     resetSearch: (state) => {
@@ -30,6 +30,8 @@ const SinglePostSlice = createSlice({
       state.loading = true;
       state.message = "";
       state.error = "";
+      state.forum = {};
+      state.comments = {};
     });
 
     builder.addCase(getSinglePost.fulfilled, (state, action) => {
