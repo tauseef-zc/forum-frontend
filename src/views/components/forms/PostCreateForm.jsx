@@ -18,11 +18,15 @@ const PostCreateForm = (props) => {
       <Typography variant="h6" gutterBottom>
         Create a Post
       </Typography>
-      <NotificationAlert
-        status={status}
-        show={message !== ""}
-        message={message}
-      />
+      
+      {message !== "" && (
+        <NotificationAlert
+          status={status}
+          show={message !== ""}
+          message={message}
+        />
+      )}
+
       <Grid container spacing={3} sx={{ marginTop: 1 }}>
         <Grid item xs={12}>
           <Controller

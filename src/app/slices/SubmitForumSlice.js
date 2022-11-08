@@ -6,6 +6,7 @@ import {
 import axios from "../services/axios";
 
 const FORUM_SUBMIT = "dashboard/posts/submit";
+const ADMIN_FORUM_SUBMIT = "admin/posts/submit";
 
 const initialState = {
   loading: false,
@@ -16,8 +17,9 @@ const initialState = {
 
 export const submitForum = createAsyncThunk("submitForum", (data) => {
   createToast();
+  const endpoint = data.userType === "Admin" ? FORUM_SUBMIT : ADMIN_FORUM_SUBMIT;
   const res = axios
-    .post(FORUM_SUBMIT, data)
+    .post(endpoint, data)
     .then((response) => {
       clearToast();
       return response.data;

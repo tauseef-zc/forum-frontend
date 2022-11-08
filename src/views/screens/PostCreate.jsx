@@ -20,6 +20,7 @@ const PostCreate = () => {
       defaultValues: {
         question: "",
         user_id: user.id,
+        user_type: user.userType,
       },
     });
 
