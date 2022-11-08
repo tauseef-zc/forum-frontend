@@ -1,12 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {
-  createToast,
-  clearToast,
-} from "../services/notification";
+import { createToast, clearToast } from "../services/notification";
 import axios from "../services/axios";
+import { getSinglePost } from "./SinglePostSlice";
 
-const FORUM_SUBMIT = "dashboard/posts/submit";
-const ADMIN_FORUM_SUBMIT = "admin/posts/submit";
+const COMMENT_SUBMIT = "dashboard/posts/";
 
 const initialState = {
   loading: false,
@@ -15,13 +12,13 @@ const initialState = {
   message: "",
 };
 
-export const submitForum = createAsyncThunk("submitForum", (data) => {
+export const submitComment = createAsyncThunk("submitComment", (data, { dispatch }) => {
   createToast();
-  const endpoint = data.userType !== "Admin" ? FORUM_SUBMIT : ADMIN_FORUM_SUBMIT;
   const res = axios
-    .post(endpoint, data)
+    .post(COMMENT_SUBMIT + `${data.id}/comment`, data)
     .then((response) => {
       clearToast();
+      dispatch(getSinglePost(data.id));
       return response.data;
     })
     .catch((error) => {
@@ -32,7 +29,7 @@ export const submitForum = createAsyncThunk("submitForum", (data) => {
   return res;
 });
 
-const SubmitForumSlice = createSlice({
+const SubmitCommentSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
@@ -41,33 +38,32 @@ const SubmitForumSlice = createSlice({
       state.message = "";
       state.error = "";
       state.status = "";
-    }
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(submitForum.pending, (state) => {
+    builder.addCase(submitComment.pending, (state) => {
       state.loading = true;
       state.message = "";
-      state.error   = "";
-      state.status   = "";
+      state.error = "";
+      state.status = "";
     });
 
-    builder.addCase(submitForum.fulfilled, (state, action) => {
+    builder.addCase(submitComment.fulfilled, (state, action) => {
       state.loading = false;
       state.message = action.payload.message;
-      state.error   = "";
+      state.error = "";
       state.status = "success";
     });
 
-    builder.addCase(submitForum.rejected, (state, action) => {
+    builder.addCase(submitComment.rejected, (state, action) => {
       state.loading = false;
-      state.error   = action.error.message;
+      state.error = action.error.message;
       state.message = "";
       state.status = "error";
     });
-
   },
 });
 
-export const { resetForumSubmit } = SubmitForumSlice.actions;
+export const { resetForumSubmit } = SubmitCommentSlice.actions;
 
-export default SubmitForumSlice.reducer;
+export default SubmitCommentSlice.reducer;

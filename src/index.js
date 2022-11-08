@@ -10,7 +10,7 @@ import theme from './views/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline>
@@ -18,7 +18,7 @@ root.render(
         </CssBaseline>
       </ThemeProvider>
     </Provider>
-  </React.StrictMode>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

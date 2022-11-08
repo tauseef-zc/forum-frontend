@@ -4,12 +4,10 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../../app/slices/AuthSlice";
 import { RegisterForm } from "../../components/forms/RegisterForm";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useDispatch();
   const { message, loading } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
 
   const {
     control,

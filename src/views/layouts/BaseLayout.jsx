@@ -3,26 +3,37 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useLocation, Outlet, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import usePermission from "../../app/hooks/usePermission";
 import Header from "../components/Header";
 
 export const BaseLayout = () => {
 
   const location = useLocation();
   const auth = useSelector((state) => state.auth);
+  const { isAdmin } = usePermission();
+  let menu = [];
 
   if (!auth.is_logged) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  const menu = [
-    { title: "Home", url: "/" },
-    { title: "Add Post", url: "/posts/add-post" },
-    { title: "My Posts", url: "/posts" },
-  ];
+  if(isAdmin){
+      menu = [
+       { title: "Home", url: "/" },
+       { title: "All Posts", url: "/admin/posts" },
+       { title: "Add New Post", url: "/posts/add-post" },
+     ];
+  }else{
+      menu = [
+        { title: "Home", url: "/" },
+        { title: "My Posts", url: "/posts" },
+        { title: "Add New Post", url: "/posts/add-post" },
+      ];
+  }
 
   return (
     <React.Fragment>
-      <ToastContainer position="top-right" limit={1} />
+      <ToastContainer position="bottom-right" limit={1} />
       <Header sections={menu} />
       <Box
         className="main-wrapper"
@@ -31,7 +42,8 @@ export const BaseLayout = () => {
             theme.palette.mode === "light"
               ? theme.palette.grey[100]
               : theme.palette.grey[900],
-          height: "90vh",
+          height: "100%",
+          minHeight: "90vh"
         }}
       >
         <Container>
