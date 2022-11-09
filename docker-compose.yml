@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  frontapp:
+
+services:
+
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: forum_react
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./src:/var/sites/app/src
+    ports:
+      - "3000:3000"
+    networks:
+      - frontapp
