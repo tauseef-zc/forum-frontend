@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const Header = (props) => {
@@ -40,7 +39,7 @@ const Header = (props) => {
           onClick={() => navigate("/logout")}
           variant="outlined"
           size="small"
-          sx={{ mx: 2 }}
+          sx={{ mx: 3 }}
         >
           Logout
         </Button>
@@ -48,17 +47,10 @@ const Header = (props) => {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: "space-between", overflowX: "auto" }}
+        sx={{ overflowX: "auto", gap: 3 }}
       >
         {sections.map((section) => (
-          <Link
-            color="inherit"
-            noWrap
-            key={section.title}
-            variant="body2"
-            href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
-          >
+          <Link key={section.title} variant="body2" to={section.url}>
             {section.title}
           </Link>
         ))}

@@ -10,14 +10,17 @@ const AUTH_REGISTER = "register";
 const AUTH_LOGIN = "login";
 
 let toastId = null;
+let token = localStorage.getItem("token") ? JSON.parse(localStorage.getItem("token")) : null;
+let user = localStorage.getItem("user_data") ? JSON.parse(localStorage.getItem("user_data")) : {};
+let is_logged = token !== null;
 
 const initialState = {
   loading: false,
   error: "",
   message: "",
-  user: {},
-  token: null,
-  is_logged: false,
+  user: user,
+  token: token,
+  is_logged: is_logged,
 };
 
 export const registerUser = createAsyncThunk('registerUser', (data) => {
