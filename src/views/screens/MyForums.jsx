@@ -83,6 +83,7 @@ const MyForums = () => {
                       onClick={() => {
                         navigate(`/posts/${item.id}`);
                       }}
+                      noWrap
                     >
                       {item.question}
                     </Typography>
