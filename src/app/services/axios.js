@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
       
     if (
       error.response.status === 401 &&
-      error.response.statusText === "Unauthorized"
+      error.response.data.message === "Unauthenticated."
     ) {
       window.location.href = "/logout";
     }

@@ -63,6 +63,7 @@ const Home = () => {
                       component="h5"
                       variant="h6"
                       color="text.primary"
+                      noWrap
                     >
                       {item.question}
                     </Typography>
