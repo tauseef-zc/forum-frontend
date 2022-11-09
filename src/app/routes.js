@@ -10,6 +10,7 @@ import PostCreate from "../views/screens/PostCreate";
 import usePermission from "./hooks/usePermission";
 import SingleForum from "../views/screens/SingleForum";
 import MyForums from "../views/screens/MyForums";
+import AllForums from "../views/screens/admin/AllForums";
 
 export const LocalRoutes = () => {
   const location = useLocation();
@@ -32,7 +33,7 @@ export const LocalRoutes = () => {
             index
             exact
             path="/admin/posts"
-            element={<PostCreate />}
+            element={<AllForums />}
             ></Route>
         )}
         <Route index exact path="/posts/:id" element={<SingleForum />}></Route>

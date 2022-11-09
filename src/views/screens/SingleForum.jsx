@@ -8,7 +8,7 @@ import ReplyForm from "../components/forms/ReplyForm";
 const SingleForum = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const { loading, forum, comments } = useSelector((state) => state.single);
+  const { forum, comments } = useSelector((state) => state.single);
 
 
   useEffect(() => {
